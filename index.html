@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+
+<head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="TodoController">
+    <div class="container">
+        <h1 class="text-center">To-Do List</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <h4>Must Do</h4>
+                <input type="text" class="form-control" ng-model="newMustDoItem" placeholder="Add new item"
+                    ng-keyup="$event.keyCode == 13 && addMustDoItem()">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="item in mustDoItems">
+                        <input type="checkbox" ng-model="item.done"> {{ item.text }}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4>Should Do</h4>
+                <input type="text" class="form-control" ng-model="newShouldDoItem" placeholder="Add new item"
+                    ng-keyup="$event.keyCode == 13 && addShouldDoItem()">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="item in shouldDoItems">
+                        <input type="checkbox" ng-model="item.done"> {{ item.text }}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4>Could Do</h4>
+                <input type="text" class="form-control" ng-model="newCouldDoItem" placeholder="Add new item"
+                    ng-keyup="$event.keyCode == 13 && addCouldDoItem()">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="item in couldDoItems">
+                        <input type="checkbox" ng-model="item.done"> {{ item.text }}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4>If I Have Time</h4>
+                <input type="text" class="form-control" ng-model="newIfIHaveTimeItem" placeholder="Add new item"
+                    ng-keyup="$event.keyCode == 13 && addIfIHaveTimeItem()">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="item in ifIHaveTimeItems">
+                        <input type="checkbox" ng-model="item.done"> {{ item.text }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <button class="btn btn-primary" ng-click="clearMarked()">Clear Marked</button>
+        </div>
+    </div>
+</body>
+
+</html>
